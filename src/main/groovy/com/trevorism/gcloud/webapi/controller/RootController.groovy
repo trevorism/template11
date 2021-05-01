@@ -1,19 +1,17 @@
 package com.trevorism.gcloud.webapi.controller
 
-import io.swagger.annotations.Api
-import io.swagger.annotations.ApiOperation
-import io.swagger.annotations.Contact
-import io.swagger.annotations.Info
-import io.swagger.annotations.SwaggerDefinition
+import io.swagger.v3.oas.annotations.OpenAPIDefinition
+import io.swagger.v3.oas.annotations.Operation
+import io.swagger.v3.oas.annotations.info.Contact
+import io.swagger.v3.oas.annotations.info.Info
+import jakarta.ws.rs.GET
+import jakarta.ws.rs.Path
+import jakarta.ws.rs.Produces
+import jakarta.ws.rs.core.MediaType
+import jakarta.ws.rs.core.Response
 
-import javax.ws.rs.GET
-import javax.ws.rs.Path
-import javax.ws.rs.Produces
-import javax.ws.rs.core.MediaType
-import javax.ws.rs.core.Response
 
-@Api("Root Operations")
-@SwaggerDefinition(
+@OpenAPIDefinition(
         info = @Info(
                 description = "API",
                 version = "1",
@@ -24,7 +22,7 @@ import javax.ws.rs.core.Response
 @Path("/")
 class RootController {
 
-    @ApiOperation(value = "Returns 'pong' if the application is alive")
+    @Operation(summary = "Returns 'pong' if the application is alive")
     @GET
     @Path("ping")
     @Produces(MediaType.APPLICATION_JSON)
@@ -32,13 +30,13 @@ class RootController {
         "pong"
     }
 
-    @ApiOperation(value = "Context root of the application")
+    @Operation(summary = "Context root of the application")
     @GET
     String displayHelpLink(){
         '<h1>API</h1><br/>Visit the help page at <a href="/help">/help'
     }
 
-    @ApiOperation(value = "Shows this help page")
+    @Operation(summary = "Shows this help page")
     @GET
     @Path("help")
     Response help(){

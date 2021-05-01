@@ -1,0 +1,3 @@
+runtime: java11
+entrypoint: java -noverify -jar template11-0.0.1.jar
+service: 'template11'
